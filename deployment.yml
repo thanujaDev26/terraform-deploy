@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: terraform-deployment
+  labels:
+    app: terraform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: terraform
+  template:
+    metadata:
+      labels:
+        app: terraform
+    spec:
+      containers:
+        - name: terraform
+          image: thanujadev26/terraform:latest
+          ports:
+            - containerPort: 3001
